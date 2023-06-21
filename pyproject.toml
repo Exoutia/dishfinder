@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "dishfinder"
+version = "0.1.0"
+description = "this is a simple app for finding the dishes by typing their name into search box"
+authors = ["Exoutia <jhav365@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Django = "^4.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
