@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'index' %}">DishFinder</a>
+    </div>
+</nav>
+<div class="container">
+    <h1>{{res.name}}</h1>
+    <h2>ID: {{res.restaurant_id}}</h2>
+    <h4>Location: {{res.location}}</h4>
+    <small>{{res.latitude}}, {{res.longitude}}</small>
+    <h5>Full Details</h5>
+    <table class="table">
+        {% for i, j in res.full_details.items %}
+        <tr>
+            <th>{{i}}</th>
+            <td>{{j}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    <h5>Menu</h5>
+    <table class="table table-striped-columns">
+        {% for i, j in res.items.items %}
+        <tr>
+            <th>{{i}}</th>
+            <td>{{j}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock content %}

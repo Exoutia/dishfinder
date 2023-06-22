@@ -43,7 +43,7 @@
         </td>
         {% endif %}
         <td>
-          <a href="#" class="btn btn-info" role="button">Full Details</a>
+          <a href="{% url 'full_details' data.restaurant_id %}" class="btn btn-info" role="button">Full Details</a>
         </td>
       </tr>
       {% endfor %}

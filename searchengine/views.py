@@ -30,3 +30,8 @@ def index(request):
 
     res = Restaurant.objects.all()
     return render(request, 'index.html', {'res': res})
+
+
+def full_details(request, pk):
+    res = Restaurant.objects.get(pk=pk)
+    return render (request, 'full_details.html', {'res': res})
