@@ -6,7 +6,7 @@
 
     <form class="d-flex" method='POST'>
         {% csrf_token %}
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name='dish' {% if search_value %}value={{search_value}}{% endif %}>
+      <input helper="this will only work for 1 word" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name='dish' {% if search_value %}value={{search_value}}{% endif %}>
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
   </div>
