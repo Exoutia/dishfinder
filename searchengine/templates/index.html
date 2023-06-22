@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline" method='POST'>
+        {% csrf_token %}
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='dish'>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      
+    </form>
+  </nav>
+
+<div class="container-fluid">
+  <table class="table">
+    <thead>
+      <th scope="col">#</th>
+      <th scope="col">Restaurant_id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Location</th>
+      <th scope="col">Items</th>
+    </thead>
+    <tbody>
+      {% for data in res %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{data.restaurant_id }}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.location}}</td>
+        {% if items_that_matched %}
+        <td>
+        {% for i in items_that_matched %}
+          {{i}},
+        {% endfor %}
+        </td>
+        {% else %}
+        <td>
+            {% for i, j  in data.items.items %}
+            {{i}}: {{j}}<br>
+            {% endfor %}
+        </td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock content %}
