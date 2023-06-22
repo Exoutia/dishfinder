@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 <nav class="navbar navbar-light bg-light">
-    <form class="form-inline" method='POST'>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index' %}">DishFinder</a>
+
+    <form class="d-flex" method='POST'>
         {% csrf_token %}
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='dish'>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name='dish' {% if search_value %}value={{search_value}}{% endif %}>
+      <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
+  </div>
   </nav>
 
 <div class="container-fluid">
@@ -17,6 +20,7 @@
       <th scope="col">Name</th>
       <th scope="col">Location</th>
       <th scope="col">Items</th>
+      <th scope="col">Full_Details</th>
     </thead>
     <tbody>
       {% for data in res %}
@@ -38,6 +42,9 @@
             {% endfor %}
         </td>
         {% endif %}
+        <td>
+          <a href="#" class="btn btn-info" role="button">Full Details</a>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
