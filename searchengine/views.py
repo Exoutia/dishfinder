@@ -7,6 +7,7 @@ def index(request):
         res = []
         items_that_matched = []
         search_term = request.POST.get('dish')
+        serach_value = search_term
         if search_term == '':
             res = Restaurant.objects.all()
             return render(request, 'index.html', {'res': res})
@@ -25,7 +26,7 @@ def index(request):
                     break
         # print(items_that_matched)
         result = [Restaurant.objects.get(pk=i) for i in res]
-        return render(request, 'index.html', {'res': result,'items_that_matched': items_that_matched})
+        return render(request, 'index.html', {'res': result,'items_that_matched': items_that_matched, "search_value":serach_value})
 
     res = Restaurant.objects.all()
     return render(request, 'index.html', {'res': res})
